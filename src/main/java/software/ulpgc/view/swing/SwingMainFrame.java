@@ -2,16 +2,16 @@ package software.ulpgc.view.swing;
 
 import software.ulpgc.controller.*;
 import software.ulpgc.model.FixedAPIExchangeRateLoader;
+import software.ulpgc.controller.CommandManager;
+
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SwingMainFrame extends JFrame {
 
     private final OperationalPanel operationalPanel = new OperationalPanel();
     private final DisplayPanel displayPanel = new DisplayPanel();
-    private final Map<String, Command> commands = new HashMap<>();
+    private final CommandManager commandManager = new CommandManager();
 
     public static void main(String[] args) {
         SwingMainFrame mainFrame = new SwingMainFrame();
@@ -26,12 +26,15 @@ public class SwingMainFrame extends JFrame {
     }
 
     private void setListeners() {
-        this.displayPanel.getButton().addActionListener(e -> this.commands.get("exchange").execute());
+        this.displayPanel.getButton().addActionListener(e -> {
+            this.displayPanel.getDisplay().setText(null);
+            this.commandManager.getCommand("exchange").execute();
+        });
     }
 
     private void addCommands() {
-        this.commands.put("exchange", new ExchangeCommand(this.operationalPanel.getControlPanel().getMoneyDialog(),
-                this.operationalPanel.getControlPanel().getBaseCurrencyDialog(), new FixedAPIExchangeRateLoader(),
+        this.commandManager.loadCommand("exchange", new ExchangeCommand(this.operationalPanel.getControlPanel().getMoneyDialog(),
+                this.operationalPanel.getControlPanel().getQuoteCurrencyDialog(), new FixedAPIExchangeRateLoader(),
                 this.displayPanel.getDisplay()));
     }
 
