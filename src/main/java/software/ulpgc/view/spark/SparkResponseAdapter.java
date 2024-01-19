@@ -11,4 +11,5 @@ public class SparkResponseAdapter implements Output{
             response.body(money.toString());
         });
     }
+
 }
