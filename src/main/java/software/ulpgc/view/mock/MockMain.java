@@ -42,8 +42,8 @@ public class MockMain {
     }
 
     private static void createComponents() {
-        currencyDialog = new MockCurrencyDialog();
-        moneyDialog = new MockMoneyDialog();
+        moneyDialog = new MockMoneyDialog("ARS", 80);
+        currencyDialog = new MockCurrencyDialog("EUR");
         moneyDisplay = new MockMoneyDisplay();
     }
 

@@ -6,7 +6,13 @@ import java.util.*;
 
 public class MockCurrencyDialog implements CurrencyDialog {
 
-    public Set<Currency> currencies = new HashSet<>();
+    private String code;
+    public Set<Currency> currencies;
+
+    public MockCurrencyDialog(String code) {
+        this.code = code;
+    }
+
     @Override
     public void setCurrencies(Set<Currency> currencies) {
         this.currencies = currencies;
@@ -14,8 +20,7 @@ public class MockCurrencyDialog implements CurrencyDialog {
 
     @Override
     public Currency get() {
-        String code = new Scanner(System.in).next();
-        return this.currencies.stream().filter(currency -> currency.code().equals(code)).
+        return this.currencies.stream().filter(currency -> currency.code().equals(this.code)).
                 findFirst().orElse(null);
     }
 }
