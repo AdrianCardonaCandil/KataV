@@ -1,5 +1,5 @@
 package software.ulpgc.view.spark;
 
 public interface RequestListener {
-    public void catchRequests(Input input, Output output);
+    public abstract void catchToHandleRequest(Input input, Output output);
 }
