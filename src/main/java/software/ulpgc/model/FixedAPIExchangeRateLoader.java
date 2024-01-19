@@ -7,7 +7,7 @@ import java.net.*;
 import com.google.gson.*;
 
 public class FixedAPIExchangeRateLoader implements ExchangeRateLoader{
-    private static final String url = "http://data.fixer.io/api/latest&base=EUR?access_key=1fc958fb8125205d4b336c96ee5c8d63";
+    private static final String url = "http://data.fixer.io/api/latest&base=EUR?access_key=2cd3afef7c870e2a2866908f9440b7c7";
     private final Map<String, Double> eurRates = new HashMap<>();
     private LocalDate date;
 

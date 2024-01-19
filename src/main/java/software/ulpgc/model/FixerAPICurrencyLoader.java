@@ -6,7 +6,7 @@ import java.net.*;
 import java.util.*;
 
 public class FixerAPICurrencyLoader implements CurrencyLoader{
-    private static final String url = "http://data.fixer.io/api/symbols?access_key=1fc958fb8125205d4b336c96ee5c8d63";
+    private static final String url = "http://data.fixer.io/api/symbols?access_key=2cd3afef7c870e2a2866908f9440b7c7";
     private final Set<Currency> currencies = new HashSet<>();
 
     @Override
